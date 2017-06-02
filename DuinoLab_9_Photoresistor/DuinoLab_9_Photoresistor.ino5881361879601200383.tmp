@@ -1,0 +1,26 @@
+const int PHOTORESISTOR_PIN = A5;
+const int CLOCK_PIN = A4;
+const int LATCH_PIN = A3;
+const int DATA_PIN = A2;
+
+void setup() {
+    pinMode( PHOTORESISTOR_PIN, INPUT );
+    pinMode( CLOCK_PIN, OUTPUT );
+    pinMode( LATCH_PIN, OUTPUT );
+    pinMode( DATA_PIN, OUTPUT );
+}
+
+void loop() {
+
+    int val = map( analogRead(PHOTORESISTOR_PIN), 0, 1023, 0, 8 ); // 0 hingga 8 lampu nyala
+
+    byte leds = 0;
+    
+    for( int i = 0; i < val; i++ ) {
+        bitSet( val, i );
+    }
+
+    
+    
+    delay( 200 ); // delay 0.2 detik untuk pergantian
+}
